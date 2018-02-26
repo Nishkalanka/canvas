@@ -1,3 +1,9 @@
+/* line 1, ../sass/style.scss */
 body {
   background: url(../img/grid.jpg) repeat;
+}
+
+/* line 5, ../sass/style.scss */
+#canvas {
+  outline: 2px solid #000;
 }
