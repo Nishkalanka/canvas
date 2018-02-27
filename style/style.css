@@ -8,3 +8,15 @@ body {
   outline: 2px solid #000;
   margin: 100px;
 }
+
+/* line 10, ../sass/style.scss */
+#canvas2 {
+  outline: 2px solid #000;
+  margin: 100px;
+}
+
+/* line 15, ../sass/style.scss */
+#canvas3 {
+  outline: 2px solid #000;
+  margin: 100px;
+}

@@ -9,7 +9,13 @@
 </head>
 
 <body>
-  <canvas id="canvas" width="150" height="150"></canvas>
+
+  <canvas id="canvas" width="500" height="500"></canvas>
+  
+  <canvas id="canvas2" width="500" height="500"></canvas>
+  
+  <canvas id="canvas3" width="500" height="500"></canvas>
+  
 </body>
 
 <script src="js/canvas.js"></script>
