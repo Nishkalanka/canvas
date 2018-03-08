@@ -147,13 +147,15 @@
 
       draw2();
 
-      function fractal() {
-        var canvas = document.getElementById('canvas5');
-        var ctx5 = canvas.getContext('2d');
-        rect([50, 50], [450, 50], [450, 450], [50, 450], s, ctx5);
-      }
 
-      function rect(a, b, c, d, s, ctx5) {
+     function fractal() {
+       
+       time = Date.now(); 
+       window.requestAnimationFrame(render);
+       
+     }
+
+     function rect(a, b, c, d, s, ctx5, step) {
         ctx5.beginPath();
         ctx5.moveTo(a[0], a[1]);
         ctx5.lineTo(b[0], b[1]);
@@ -163,26 +165,42 @@
         ctx5.stroke();
 
         if (s > 0) {
-          var step = 0.1;
+          
           var ta = [];
-          ta[0] = a[0]*(step) + b[0]*(1 - step);
-          ta[1] = a[1]*(step) + b[1]*(1 - step);
+          ta[0] = a[0] * (step) + b[0] * (1 - step);
+          ta[1] = a[1] * (step) + b[1] * (1 - step);
 
-          var tb = [ ];
-          tb[0] = b[0]*(step) + c[0]*(1 - step);
-          tb[1] = b[1]*(step) + c[1]*(1 - step);
-          
-          var tc = [ ];
-          tc[0] = c[0]*(step) + d[0]*(1 - step);
-          tc[1] = c[1]*(step) + d[1]*(1 - step);
-          
-          var td = [ ];
-          td[0] = d[0]*(step) + a[0]*(1 - step);
-          td[1] = d[1]*(step) + a[1]*(1 - step);
-   
-          rect(ta,tb,tc,td, s-1 ,ctx5);
+          var tb = [];
+          tb[0] = b[0] * (step) + c[0] * (1 - step);
+          tb[1] = b[1] * (step) + c[1] * (1 - step);
+
+          var tc = [];
+          tc[0] = c[0] * (step) + d[0] * (1 - step);
+          tc[1] = c[1] * (step) + d[1] * (1 - step);
+
+          var td = [];
+          td[0] = d[0] * (step) + a[0] * (1 - step);
+          td[1] = d[1] * (step) + a[1] * (1 - step);
+
+          rect(ta, tb, tc, td, s - 1, ctx5, step);
         }
 
-      }
+      };
+      
+      function render(){
+        var canvas = document.getElementById('canvas5');
+        var ctx5 = canvas.getContext('2d');
+        var step = 1 + (Date.now() - time)/20 % 1000;
+        
+        ctx5.clearRect(0, 0, 500, 500);
+        
+        rect([50, 50], [450, 50], [450, 450], [50, 450], 50, ctx5, step/1000);
+        
+        
+        window.requestAnimationFrame(render);
+        
+      };
 
       fractal();
+
+
